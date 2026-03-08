@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Data;
 using WinMySQL.Clases;
 namespace WinMySQL.Views
 {
@@ -56,14 +50,16 @@ namespace WinMySQL.Views
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int idMateria = Convert.ToInt32(dgvMaterias.CurrentRow.Cells[0].Value);
-            if (MessageBox.Show("Desea eliminar la materia:" + dgvMaterias.CurrentRow.Cells[1].Value.ToString(), "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+            if (MessageBox.Show("Desea eliminar la materia:" + dgvMaterias.CurrentRow.Cells[1].Value.ToString(), "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
                 bool f = datos.ejecutarComando($"Delete from Materias where idMaterias={idMateria}");
                 if (f)
                 {
                     MessageBox.Show("Registro eliminado", "Sistema");
 
                 }
-                else {
+                else
+                {
                     MessageBox.Show("Error al eliminar", "Sistema");
 
                 }
