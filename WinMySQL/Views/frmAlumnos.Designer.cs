@@ -30,12 +30,14 @@
         {
             components = new System.ComponentModel.Container();
             splitContainer1 = new SplitContainer();
+            button1 = new Button();
             btnAgregar = new Button();
             txtBuscar = new TextBox();
             label1 = new Label();
             dgvAlumnos = new DataGridView();
             cmsDatos = new ContextMenuStrip(components);
             eliminarToolStripMenuItem = new ToolStripMenuItem();
+            ofdExcel = new OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -53,6 +55,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            splitContainer1.Panel1.Controls.Add(button1);
             splitContainer1.Panel1.Controls.Add(btnAgregar);
             splitContainer1.Panel1.Controls.Add(txtBuscar);
             splitContainer1.Panel1.Controls.Add(label1);
@@ -63,6 +66,16 @@
             splitContainer1.Size = new Size(800, 450);
             splitContainer1.SplitterDistance = 110;
             splitContainer1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(643, 22);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 3;
+            button1.Text = "Importar";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // btnAgregar
             // 
@@ -93,6 +106,7 @@
             // dgvAlumnos
             // 
             dgvAlumnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAlumnos.ContextMenuStrip = cmsDatos;
             dgvAlumnos.Dock = DockStyle.Fill;
             dgvAlumnos.Location = new Point(0, 0);
             dgvAlumnos.Name = "dgvAlumnos";
@@ -106,14 +120,18 @@
             cmsDatos.ImageScalingSize = new Size(20, 20);
             cmsDatos.Items.AddRange(new ToolStripItem[] { eliminarToolStripMenuItem });
             cmsDatos.Name = "cmsDatos";
-            cmsDatos.Size = new Size(211, 56);
+            cmsDatos.Size = new Size(133, 28);
             // 
             // eliminarToolStripMenuItem
             // 
             eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            eliminarToolStripMenuItem.Size = new Size(210, 24);
+            eliminarToolStripMenuItem.Size = new Size(132, 24);
             eliminarToolStripMenuItem.Text = "Eliminar";
             eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
+            // 
+            // ofdExcel
+            // 
+            ofdExcel.FileName = "openFileDialog1";
             // 
             // frmAlumnos
             // 
@@ -144,5 +162,7 @@
         private Button btnAgregar;
         private ContextMenuStrip cmsDatos;
         private ToolStripMenuItem eliminarToolStripMenuItem;
+        private Button button1;
+        private OpenFileDialog ofdExcel;
     }
 }

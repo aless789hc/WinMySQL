@@ -93,6 +93,7 @@
             // dgvProfesores
             // 
             dgvProfesores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProfesores.ContextMenuStrip = cmsDatos;
             dgvProfesores.Dock = DockStyle.Fill;
             dgvProfesores.Location = new Point(0, 0);
             dgvProfesores.Name = "dgvProfesores";
@@ -106,12 +107,12 @@
             cmsDatos.ImageScalingSize = new Size(20, 20);
             cmsDatos.Items.AddRange(new ToolStripItem[] { eliminarToolStripMenuItem });
             cmsDatos.Name = "cmsDatos";
-            cmsDatos.Size = new Size(211, 56);
+            cmsDatos.Size = new Size(133, 28);
             // 
             // eliminarToolStripMenuItem
             // 
             eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            eliminarToolStripMenuItem.Size = new Size(210, 24);
+            eliminarToolStripMenuItem.Size = new Size(132, 24);
             eliminarToolStripMenuItem.Text = "Eliminar";
             eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
             // 
