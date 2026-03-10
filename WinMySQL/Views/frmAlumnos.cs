@@ -98,12 +98,12 @@ namespace WinMySQL.Views
                         for (int col = 1; col <= columnCount; col++)
                         {
                             drNew[col - 1] = worksheet.Cells[row,col].Value.ToString();
-
                         }
                         dt.Rows.Add(drNew);
-                        String comando = $"Insert Into Alumnos(Matricula,Nombre,Apellido,Correo) VALUES('{drNew.ItemArray[0]}','{drNew.ItemArray[1]}','{drNew.ItemArray[2]}','{drNew.ItemArray[3]}')";
+                        String comando = $"Insert Into Alumnos(Matricula,Nombre,Apellido,Correo) VALUES('{drNew.ItemArray[0]}','{drNew.ItemArray[1]}','" +
+                            $"{drNew.ItemArray[2]}','{drNew.ItemArray[3]}')";
+                        datos.ejecutarComando(comando);
                     }
-
                 }
             }
                      
