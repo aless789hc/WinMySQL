@@ -15,12 +15,17 @@ namespace WinMySQL.Views
         }
 
         private void frmAlumnos_Load(object sender, EventArgs e)
-        {
-
+        {//load cuando se ejecuta cuando se abre el form y ya no se vuelve a ejecutar
+            DataSet ds = datos.ejecutar("Select Matricula,Nombre,Apellido,Correo From Alumnos");
+            if (ds != null)
+            {
+                dgvAlumnos.DataSource = ds.Tables[0];
+            }
         }
 
         private void frmAlumnos_Activated(object sender, EventArgs e)
         {
+            //siempre cuando seleccionas una ventana
             try
             {
                 ds = datos.ejecutar("Select * from Alumnos");
@@ -78,7 +83,7 @@ namespace WinMySQL.Views
         private void button1_Click(object sender, EventArgs e)
         {
             String path;
-            DialogResult dr=ofdExcel.ShowDialog();
+            DialogResult dr = ofdExcel.ShowDialog();
             if (dr == DialogResult.OK)
             {
                 path = ofdExcel.FileName;
@@ -93,11 +98,12 @@ namespace WinMySQL.Views
                     {
                         dt.Columns.Add(worksheet.Cells[1, col].Value.ToString());
                     }
-                    for (int row = 2; row <= rowCount; row++) { 
+                    for (int row = 2; row <= rowCount; row++)
+                    {
                         DataRow drNew = dt.NewRow();
                         for (int col = 1; col <= columnCount; col++)
                         {
-                            drNew[col - 1] = worksheet.Cells[row,col].Value.ToString();
+                            drNew[col - 1] = worksheet.Cells[row, col].Value.ToString();
                         }
                         dt.Rows.Add(drNew);
                         String comando = $"Insert Into Alumnos(Matricula,Nombre,Apellido,Correo) VALUES('{drNew.ItemArray[0]}','{drNew.ItemArray[1]}','" +
@@ -106,7 +112,19 @@ namespace WinMySQL.Views
                     }
                 }
             }
-                     
+
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            Busqueda();
+        }
+        private void Busqueda() { 
+            DataSet ds = datos.ejecutar($"Select Matricula,Nombre,Apellido,Correo From Alumnos where Nombre like '%{txtBuscar.Text}%'");
+            if (ds != null)
+            {
+                dgvAlumnos.DataSource = ds.Tables[0];
+            }
         }
     }
 }
